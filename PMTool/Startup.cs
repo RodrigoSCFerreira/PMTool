@@ -26,8 +26,12 @@ namespace PMTool
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add Framework services
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //Enable dependency injection for context of PmTool Database
+            services.AddDbContext<PmDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("PmToolConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
