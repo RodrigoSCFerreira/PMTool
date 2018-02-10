@@ -21,18 +21,8 @@ namespace PMTool.Models
         public virtual DbSet<TaskInfo> TaskInfo { get; set; }
         public virtual DbSet<TaskList> TaskList { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer(@"Data Source=pmtooldb.cprkfobdb2uc.ca-central-1.rds.amazonaws.com,1433;Initial Catalog=pmdb;Persist Security Info=True;User ID=capstrikers;Password=SenhaNova");
-        //        // optionsBuilder.UseSqlServer(@"PmToolConnection");
-        //    }
-        //}
-
-            public PmDbContext(DbContextOptions<PmDbContext> options) : base(options)
+        public PmDbContext(DbContextOptions<PmDbContext> options):base(options)
         { }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -380,6 +370,12 @@ namespace PMTool.Models
                     .HasForeignKey(d => d.ProvinceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FKPerson260511");
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Person)
+                    .HasForeignKey(d => d.RoleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FKPerson791976");
             });
 
             modelBuilder.Entity<Project>(entity =>
@@ -448,21 +444,13 @@ namespace PMTool.Models
             {
                 entity.ToTable("role");
 
-                entity.Property(e => e.RoleId)
-                    .HasColumnName("roleId")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.RoleId).HasColumnName("roleId");
 
                 entity.Property(e => e.RolePrivilegies)
                     .IsRequired()
                     .HasColumnName("rolePrivilegies")
                     .HasMaxLength(255)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.RoleNavigation)
-                    .WithOne(p => p.Role)
-                    .HasForeignKey<Role>(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FKrole373216");
             });
 
             modelBuilder.Entity<Task>(entity =>
