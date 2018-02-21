@@ -11,3 +11,4 @@ Students:
 - Bruno Penna Barbosa de Almeida - https://github.com/brunobalmeida
 - Erica de Sousa Menezes - https://github.com/ericatham
 - Rodrigo de Salles Cunha Ferreira - https://github.com/RodrigoSCFerreira
+Start Date: 02/2018
