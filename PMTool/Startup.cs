@@ -30,7 +30,7 @@ namespace PMTool
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Enable dependency injection for context of PmTool Database
-            services.AddDbContext<PmDbContext>(options =>
+            services.AddDbContext<PmToolDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("PmToolConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -40,12 +40,17 @@ namespace PMTool
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

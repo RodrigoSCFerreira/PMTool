@@ -5029,6 +5029,16 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
+      },
+      "PmToolClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/PmToolClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PmToolClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -13105,6 +13115,11 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "PmToolClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../PmToolClassLibrary/PmToolClassLibrary.csproj",
+      "msbuildProject": "../PmToolClassLibrary/PmToolClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13112,11 +13127,13 @@
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
+      "PmToolClassLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
     "C:\\Users\\dbrun\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13125,18 +13142,20 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool\\PMTool\\PMTool.csproj",
+      "projectUniqueName": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool - Branch\\PMTool\\PMTool.csproj",
       "projectName": "PMTool",
-      "projectPath": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool\\PMTool\\PMTool.csproj",
+      "projectPath": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool - Branch\\PMTool\\PMTool.csproj",
       "packagesPath": "C:\\Users\\dbrun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool\\PMTool\\obj\\",
+      "outputPath": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool - Branch\\PMTool\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\dbrun\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13147,7 +13166,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool - Branch\\PmToolClassLibrary\\PmToolClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\dbrun\\Dropbox\\Capstone\\PMTool - Branch\\PmToolClassLibrary\\PmToolClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -13159,24 +13182,24 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           }
         },
         "imports": [

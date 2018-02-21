@@ -17,6 +17,7 @@ namespace PMTool.Models
         public int ProjectName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public string ProjectDescription { get; set; }
 
         public Client Client { get; set; }
         public Employee Employee { get; set; }
